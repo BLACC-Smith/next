@@ -25,6 +25,10 @@ class MyDocument extends Document {
 					<link rel="manifest" href="/site.webmanifest" />
 					<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
 					<meta name="msapplication-TileColor" content="#000000" />
+					<meta
+						name="description"
+						content="BLACC (The Black Coder Community), a safe space for black people to exchange knowledge and to be exposed to new technologies."
+					/>
 					<meta name="theme-color" content="#ffffff" />
 					<meta
 						property="og:title"
