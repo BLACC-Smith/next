@@ -2,7 +2,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 
-const Container = styled.div`
+const Container = styled.main`
 	background: #000;
 	width: 100vw;
 	height: 100vh;
