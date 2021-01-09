@@ -36,7 +36,9 @@ export default function Home() {
 				height="300"
 				objectFit="contain"
 			/>
-			<DiscordCTA>Join our community</DiscordCTA>
+			<DiscordCTA href="https://discord.gg/9Bh3TZ2">
+				Join our community
+			</DiscordCTA>
 		</Container>
 	);
 }
