@@ -4,6 +4,9 @@ import styled from '@emotion/styled';
 import VideoContainer from '../components/molecules/VideoContainer';
 import FormSubmission from '../components/molecules/FormSubmission';
 import Toast from '../components/atoms/Toast';
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
+import { storage } from '../lib/config';
 
 const Container = styled.div`
 	display: grid;
@@ -83,17 +86,26 @@ export default function Youtube() {
 		setTimeout(() => setError(''), 5000);
 		return video && username && title && description && chosenTags.length;
 	};
-	const uploadSubmission = () => {
+	const uploadSubmission = async () => {
 		if (validateInputs()) {
-			console.log({
-				video,
-				username,
-				title,
-				description,
-				chosenTags,
-				updateProgress: setProgress,
-				onComplete: clearData,
+			const storageId = uuidv4();
+			const submissionsRef = storage.ref(`youtubeSubmissions/${storageId}`);
+			const uploadTask = submissionsRef.put(video, {
+				customMetadata: { username, title },
 			});
+			// try {
+			// 	const data = new FormData();
+			// 	data.append('username', username);
+			// 	data.append('title', title);
+			// 	data.append('description', description);
+			// 	data.append('video', video, video.name);
+			// 	data.append('chosenTags', JSON.stringify(chosenTags));
+
+			// 	const res = await axios.post('/api/submissions', data);
+			// 	console.log({ res });
+			// } catch (error) {
+			// 	throw new Error(`{ uploadSubmission: ${error.toString()} }`);
+			// }
 		}
 	};
 

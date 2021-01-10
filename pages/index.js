@@ -10,6 +10,7 @@ const Container = styled.main`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	overflow: hidden;
 `;
 const DiscordCTA = styled.a`
 	padding: 24px 36px;

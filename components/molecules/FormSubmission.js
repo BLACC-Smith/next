@@ -160,7 +160,6 @@ const FormSubmissionUI = ({
 				placeholder="Video Description"
 				value={description}
 				onChange={(e) => setDescription(e.target.value)}
-				resi
 			/>
 			<TagsContainer>
 				{tags.map((el, idx) => (
