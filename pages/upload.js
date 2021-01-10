@@ -4,9 +4,7 @@ import styled from '@emotion/styled';
 import VideoContainer from '../components/molecules/VideoContainer';
 import FormSubmission from '../components/molecules/FormSubmission';
 import Toast from '../components/atoms/Toast';
-import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
-import { storage } from '../lib/config';
+import { uploadVideoToStorage } from '../lib';
 
 const Container = styled.div`
 	display: grid;
@@ -15,9 +13,11 @@ const Container = styled.div`
 	align-items: center;
 	width: 100vw;
 	height: 100vh;
+	overflow: hidden;
 	position: relative;
 `;
-const YoutubeUI = ({
+
+const UploadUI = ({
 	error,
 	title,
 	video,
@@ -57,7 +57,7 @@ const YoutubeUI = ({
 		</>
 	);
 };
-export default function Youtube() {
+export default function Upload() {
 	const [video, setVideo] = useState(null);
 	const [username, setUsername] = useState('');
 	const [title, setTitle] = useState('');
@@ -88,29 +88,20 @@ export default function Youtube() {
 	};
 	const uploadSubmission = async () => {
 		if (validateInputs()) {
-			const storageId = uuidv4();
-			const submissionsRef = storage.ref(`youtubeSubmissions/${storageId}`);
-			const uploadTask = submissionsRef.put(video, {
-				customMetadata: { username, title },
+			uploadVideoToStorage({
+				video,
+				username,
+				title,
+				description,
+				chosenTags,
+				updateProgress: setProgress,
+				onComplete: clearData,
 			});
-			// try {
-			// 	const data = new FormData();
-			// 	data.append('username', username);
-			// 	data.append('title', title);
-			// 	data.append('description', description);
-			// 	data.append('video', video, video.name);
-			// 	data.append('chosenTags', JSON.stringify(chosenTags));
-
-			// 	const res = await axios.post('/api/submissions', data);
-			// 	console.log({ res });
-			// } catch (error) {
-			// 	throw new Error(`{ uploadSubmission: ${error.toString()} }`);
-			// }
 		}
 	};
 
 	return (
-		<YoutubeUI
+		<UploadUI
 			title={title}
 			setTitle={setTitle}
 			username={username}
