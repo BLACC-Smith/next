@@ -1,15 +1,11 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styled from '@emotion/styled';
+import Header from '../components/atoms/Header';
 
 const Container = styled.main`
 	background: #fff;
 	width: 100vw;
 	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 `;
 const DiscordCTA = styled.p`
 	padding: 24px 36px;
@@ -30,7 +26,7 @@ export default function Home() {
 			<Head>
 				<title>Youtube Submissions</title>
 			</Head>
-			<DiscordCTA>Sign in</DiscordCTA>
+			<Header />
 		</Container>
 	);
 }
