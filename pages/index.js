@@ -3,7 +3,7 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 
 const Container = styled.main`
-	background: #000;
+	background: #fff;
 	width: 100vw;
 	height: 100vh;
 	display: flex;
@@ -11,11 +11,12 @@ const Container = styled.main`
 	justify-content: center;
 	align-items: center;
 `;
-const DiscordCTA = styled.a`
+const DiscordCTA = styled.p`
 	padding: 24px 36px;
-	background: #fff;
+	background: #000;
 	font-weight: 600;
 	cursor: pointer;
+	color: #fff;
 	border-radius: 4px;
 	transition: all 0.3s;
 	:hover {
@@ -27,18 +28,9 @@ export default function Home() {
 	return (
 		<Container>
 			<Head>
-				<title>BLACC</title>
+				<title>Youtube Submissions</title>
 			</Head>
-			<Image
-				src="/blacc.png"
-				alt="BLACC logo"
-				width="300"
-				height="300"
-				objectFit="contain"
-			/>
-			<DiscordCTA href="https://discord.gg/9Bh3TZ2">
-				Join our community
-			</DiscordCTA>
+			<DiscordCTA>Sign in</DiscordCTA>
 		</Container>
 	);
 }
