@@ -2,9 +2,7 @@ import Head from 'next/head';
 import styled from '@emotion/styled';
 import Header from '../components/atoms/Header';
 import { getSubmissions } from '../lib';
-import { useState } from 'react';
 import Submission from '../components/atoms/Submission';
-import ReviewModal from '../components/molecules/ReviewModal';
 
 const Container = styled.main`
 	width: 100vw;
@@ -20,7 +18,6 @@ const SubmissionWrapper = styled.div`
 `;
 
 export default function Home({ submissions }) {
-	const [selectedSubmission, setSelectedSubmission] = useState(null);
 	return (
 		<>
 			<Head>
@@ -28,17 +25,12 @@ export default function Home({ submissions }) {
 			</Head>
 			<Container>
 				<Header />
-				{/* <ReviewModal
-					data={selectedSubmission}
-					onClose={() => setSelectedSubmission(null)}
-				/> */}
 				<SubmissionWrapper>
 					{submissions.map((el, idx) => (
 						<Submission
 							key={idx}
 							data={el}
 							show={idx !== submissions.length - 1}
-							onClick={setSelectedSubmission}
 						/>
 					))}
 				</SubmissionWrapper>

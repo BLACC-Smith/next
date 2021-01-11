@@ -79,7 +79,7 @@ const CTA = styled.p`
 	}
 `;
 
-const Submission = ({ data, show, onClick }) => {
+const Submission = ({ data, show }) => {
 	return (
 		<Container>
 			<Wrapper>
@@ -94,7 +94,7 @@ const Submission = ({ data, show, onClick }) => {
 					</TagsContainer>
 				</MetadataContainer>
 				<Link href={`/submissions/${data.storageId}`}>
-					<CTA onClick={() => onClick(data)}>REVIEW</CTA>
+					<CTA>REVIEW</CTA>
 				</Link>
 			</Wrapper>
 		</Container>
