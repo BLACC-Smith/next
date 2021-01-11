@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
@@ -92,7 +93,9 @@ const Submission = ({ data, show, onClick }) => {
 						))}
 					</TagsContainer>
 				</MetadataContainer>
-				<CTA onClick={() => onClick(data)}>REVIEW</CTA>
+				<Link href={`/submissions/${data.storageId}`}>
+					<CTA onClick={() => onClick(data)}>REVIEW</CTA>
+				</Link>
 			</Wrapper>
 		</Container>
 	);

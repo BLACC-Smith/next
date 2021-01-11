@@ -28,10 +28,10 @@ export default function Home({ submissions }) {
 			</Head>
 			<Container>
 				<Header />
-				<ReviewModal
+				{/* <ReviewModal
 					data={selectedSubmission}
 					onClose={() => setSelectedSubmission(null)}
-				/>
+				/> */}
 				<SubmissionWrapper>
 					{submissions.map((el, idx) => (
 						<Submission
@@ -47,7 +47,7 @@ export default function Home({ submissions }) {
 	);
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
 	const data = await getSubmissions();
 	const submissions = data.map((el) => ({
 		...el,
@@ -56,5 +56,5 @@ export async function getServerSideProps() {
 		),
 	}));
 
-	return { props: { submissions } };
+	return { props: { submissions }, revalidate: 900 };
 }
