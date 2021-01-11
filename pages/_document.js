@@ -23,6 +23,15 @@ class MyDocument extends Document {
 						href="/favicons/favicon-16x16.png"
 					/>
 					<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+					<link rel="preconnect" href="https://fonts.gstatic.com" />
+					<link
+						href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+						rel="stylesheet"
+					/>
+					<link
+						href="https://fonts.googleapis.com/icon?family=Material+Icons"
+						rel="stylesheet"
+					/>
 					<meta name="msapplication-TileColor" content="#000000" />
 					<meta
 						name="description"
