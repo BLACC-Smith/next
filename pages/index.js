@@ -4,6 +4,7 @@ import Header from '../components/atoms/Header';
 import { getSubmissions } from '../lib';
 import { useState } from 'react';
 import Submission from '../components/atoms/Submission';
+import ReviewModal from '../components/molecules/ReviewModal';
 
 const Container = styled.main`
 	width: 100vw;
@@ -27,6 +28,10 @@ export default function Home({ submissions }) {
 			</Head>
 			<Container>
 				<Header />
+				<ReviewModal
+					data={selectedSubmission}
+					onClose={() => setSelectedSubmission(null)}
+				/>
 				<SubmissionWrapper>
 					{submissions.map((el, idx) => (
 						<Submission
