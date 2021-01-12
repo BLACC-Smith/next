@@ -148,5 +148,5 @@ export async function getStaticPaths() {
 }
 export async function getStaticProps({ params }) {
 	const submission = await getSubmission(params.storageId);
-	return { props: { submission }, revalidate: 900 };
+	return { props: { submission }, revalidate: 1 };
 }
