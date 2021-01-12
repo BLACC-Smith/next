@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import axios from 'axios';
 import { useContext } from 'react';
 import { MainContext } from '../context/MainContext';
 
@@ -17,14 +18,20 @@ const CTA = styled.p`
 	cursor: pointer;
 `;
 
-export default () => {
+export default function Login() {
 	const { user } = useContext(MainContext);
-	const login = () => {
-		window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=758861764166-8f0pg51jrka1d70hjed9h6mmlfrmpabf.apps.googleusercontent.com&redirect_uri=http://localhost:3001/&state=security_token&response_type=token&scope=https://www.googleapis.com/auth/youtube.force-ssl`;
+	const login = async () => {
+		try {
+			const { data } = await axios.get('/api/auth');
+			console.log({ data });
+			window.location.href = data.url;
+		} catch (error) {
+			new Error(`{ login : ${error} }`);
+		}
 	};
 	return (
 		<Container>
 			<CTA onClick={login}>Log in</CTA>
 		</Container>
 	);
-};
+}

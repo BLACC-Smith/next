@@ -128,9 +128,8 @@ export default function ReviewSubmission({ submission }) {
 
 	const publishToYoutube = async () => {
 		try {
-			const { data } = await axios.get('/api/auth');
+			const { data } = await axios.post('/api/upload', { submission });
 			console.log({ data });
-			window.location.href = data.url;
 		} catch (error) {
 			new Error(`{ publishToYoutube : ${error} }`);
 		}

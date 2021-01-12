@@ -1,8 +1,6 @@
 const { google } = require('googleapis');
 const OAuth2Data = require('../../../credentials.json');
 
-const scopes = 'https://www.googleapis.com/auth/youtube.upload';
-
 export default async (req, res) => {
 	if (req.method !== 'GET') {
 		res.status(200).json({ error: 'Must send a GET request' });
@@ -18,12 +16,9 @@ export default async (req, res) => {
 		REDIRECT_URL
 	);
 
-	// const authed = false;
-	// if (!authed) {
 	const url = oAuth2Client.generateAuthUrl({
 		access_type: 'offline',
-		scope: scopes,
+		scope: 'https://www.googleapis.com/auth/youtube.upload',
 	});
 	res.json({ url });
-	// }
 };

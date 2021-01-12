@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
 const Container = styled.div`
 	position: sticky;
@@ -26,11 +27,13 @@ const CTA = styled.p`
 	cursor: pointer;
 `;
 
-const Header = () => {
+const Header = ({ logout }) => {
 	return (
 		<Container>
 			<Title>Dashboard</Title>
-			<CTA>Logout</CTA>
+			<Link href="/login">
+				<CTA onClick={logout}>Logout</CTA>
+			</Link>
 		</Container>
 	);
 };

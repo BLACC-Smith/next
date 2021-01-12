@@ -1,12 +1,40 @@
-import oAuth2Client from '../../lib/authConfig';
+const { google } = require('googleapis');
+const oAuth2Client = require('../../lib/authConfig');
+const multer = require('multer');
 
-const scopes = 'https://www.googleapis.com/auth/youtube.upload';
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage }).single('video');
 
 export default async (req, res) => {
 	if (req.method !== 'POST') {
 		res.status(200).json({ error: 'Must send a POST request' });
 	}
-	const { body } = req;
+
+	upload(req, res, (err) => {
+		if (err) throw err;
+		const { submission } = req.body;
+
+		const youtube = google.youtube({ version: 'v3', auth: oAuth2Client });
+		youtube.videos.insert(
+			{
+				requestBody: {
+					snippet: {
+						title: submission.title,
+						description: submission.description,
+						tags: submission.tags,
+					},
+					status: { privacyStatus: 'public' },
+				},
+				media: { body: submission.video },
+			},
+			(err, data) => {
+				if (err) throw err;
+				console.log('uploading video done');
+				res.status(200).json({ status: 'Successfully uploaded video', data });
+			}
+		);
+	});
+	res.status(200).json({ status: 'Ok' });
 
 	// try {
 	// 	const { data } = await axios.post(
