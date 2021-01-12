@@ -1,6 +1,10 @@
 * {
 	padding: 0;
 	margin: 0;
-	font-family: 'Roboto', sans-serif;
+	outline: none;
 	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
+}
+::-webkit-scrollbar {
+	display: none;
 }
