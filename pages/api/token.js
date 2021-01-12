@@ -9,7 +9,7 @@ export default async (req, res) => {
 		res.status(200).json({ error: 'Must send a POST request' });
 		return;
 	}
-	console.log({ body: req.body });
+	console.log('UPDATED TOKENS');
 	await firestore.collection('tokens').doc('private').set(req.body);
 	res.status(200).json({ status: 'Saved refresh token' });
 };
