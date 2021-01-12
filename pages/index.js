@@ -48,5 +48,5 @@ export async function getStaticProps() {
 		),
 	}));
 
-	return { props: { submissions }, revalidate: 1 };
+	return { props: { submissions }, revalidate: 15 };
 }
