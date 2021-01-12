@@ -1,10 +1,9 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getSubmission, getSubmissions } from '../../lib';
 import SubmissionWrapper from '../../components/atoms/SubmissionWrapper';
 import axios from 'axios';
-import { MainContext } from '../../context/MainContext';
 
 const Card = styled.div`
 	background: #fff;
@@ -94,7 +93,7 @@ const MetadataContainer = styled.div`
 const ReviewSubmissionUI = ({ show, submission, publish }) => {
 	return (
 		<SubmissionWrapper>
-			<Card show={false}>
+			<Card show={show}>
 				<MetadataContainer>
 					<Video width="100%" controls src={submission.video} />
 					<Title>{submission.title}</Title>
@@ -120,7 +119,6 @@ const ReviewSubmissionUI = ({ show, submission, publish }) => {
 export default function ReviewSubmission({ submission }) {
 	const router = useRouter();
 	const [show, setShow] = useState(false);
-	const { accessToken } = useContext(MainContext);
 
 	useEffect(() => {
 		setTimeout(() => setShow(true), 3000);

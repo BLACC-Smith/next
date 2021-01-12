@@ -1,22 +1,24 @@
 const { google } = require('googleapis');
-const oAuth2Client = require('../../lib/authConfig');
-const multer = require('multer');
+const { default: oAuth2Client } = require('../../lib/authConfig');
 
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage }).single('video');
-
+/**
+ * @description this route recieves the youtube submission
+ * and sends the video and its metadata to the Youtube Data v3 Api
+ * to upload.
+ */
 export default async (req, res) => {
 	if (req.method !== 'POST') {
 		res.status(200).json({ error: 'Must send a POST request' });
+		return;
 	}
 
-	upload(req, res, (err) => {
-		if (err) throw err;
-		const { submission } = req.body;
+	const { submission } = req.body;
 
+	try {
 		const youtube = google.youtube({ version: 'v3', auth: oAuth2Client });
 		youtube.videos.insert(
 			{
+				part: 'snippet,status',
 				requestBody: {
 					snippet: {
 						title: submission.title,
@@ -33,33 +35,8 @@ export default async (req, res) => {
 				res.status(200).json({ status: 'Successfully uploaded video', data });
 			}
 		);
-	});
+	} catch (error) {
+		console.log({ uploadApi: error });
+	}
 	res.status(200).json({ status: 'Ok' });
-
-	// try {
-	// 	const { data } = await axios.post(
-	// 		`https://www.googleapis.com/upload/youtube/v3/videos?part=topicDetails&autoLevels=true&notifySubscribers=true&key=${process.env.GOOGLE_API_KEY}`,
-	// 		{
-	// 			snippet: {
-	// 				title: 'Summer vacation in California',
-	// 				description: 'Had fun surfing in Santa Cruz',
-	// 				tags: ['surfing', 'Santa Cruz'],
-	// 				categoryId: '22',
-	// 			},
-	// 			status: { madeForKids: true, privacyStatus: 'private' },
-	// 		},
-	// 		{
-	// 			headers: {
-	// 				Accept: 'application/json',
-	// 				Authorization: `Bearer ${body.accessToken}`,
-	// 				'Content-Type': 'application/json',
-	// 			},
-	// 		}
-	// 	);
-	// 	console.log({ recievedData: data });
-	// 	res.json({ message: 'received data' });
-	// } catch (error) {
-	// 	console.error({ error });
-	// 	res.json({ error: error.toString() });
-	// }
 };

@@ -1,7 +1,7 @@
 import React, { createContext, useReducer, useCallback } from 'react';
 import appReducer from './appReducer';
 
-const initialState = { user: null, accessToken: null };
+const initialState = { user: null, authCode: null, accessToken: null };
 
 export const MainContext = createContext(initialState);
 
@@ -20,8 +20,8 @@ const MainContextProvider = ({ children }) => {
 		<MainContext.Provider
 			value={{
 				user: state.user,
-				updateUser,
 				accessToken: state.accessToken,
+				updateUser,
 				updateAccessToken,
 			}}
 		>

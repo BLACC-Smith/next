@@ -1,6 +1,10 @@
 const { google } = require('googleapis');
 const OAuth2Data = require('../../../credentials.json');
 
+/**
+ * @description this route initializes the oAuth2 node.js client
+ * and sends back the auth url for us to sign in.
+ */
 export default async (req, res) => {
 	if (req.method !== 'GET') {
 		res.status(200).json({ error: 'Must send a GET request' });

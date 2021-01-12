@@ -6,6 +6,11 @@ export const config = {
 	},
 };
 
+/**
+ * @description this route receives an auth code from the
+ * auth url after successful sign in. We set the credentials
+ * for the oAuth2 client and send back those tokens.
+ */
 export default async (req, res) => {
 	const { code } = req.body;
 	if (!code) res.json({ error: 'No code was retrieved from the request.' });

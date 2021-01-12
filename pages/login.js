@@ -1,7 +1,5 @@
 import styled from '@emotion/styled';
 import axios from 'axios';
-import { useContext } from 'react';
-import { MainContext } from '../context/MainContext';
 
 const Container = styled.div`
 	width: 100vw;
@@ -19,11 +17,9 @@ const CTA = styled.p`
 `;
 
 export default function Login() {
-	const { user } = useContext(MainContext);
 	const login = async () => {
 		try {
 			const { data } = await axios.get('/api/auth');
-			console.log({ data });
 			window.location.href = data.url;
 		} catch (error) {
 			new Error(`{ login : ${error} }`);

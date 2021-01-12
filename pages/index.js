@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import Header from '../components/atoms/Header';
 import { getSubmissions } from '../lib';
 import Submission from '../components/atoms/Submission';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { MainContext } from '../context/MainContext';
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -21,7 +21,7 @@ const SubmissionWrapper = styled.div`
 `;
 
 export default function Home({ submissions }) {
-	const { updateAccessToken, accessToken } = useContext(MainContext);
+	const { updateAccessToken } = useContext(MainContext);
 	const router = useRouter();
 
 	const handleAccessTokens = async () => {
@@ -30,10 +30,11 @@ export default function Home({ submissions }) {
 			router.asPath.substring(7, router.asPath.indexOf('&'));
 
 		try {
-			if (code) {
+			if (code.length > 2) {
 				const { data } = await axios.post(`/api/auth/callback`, { code });
-				console.log({ data });
-				updateAccessToken(data.tokens.access_token);
+				data && updateAccessToken(data.tokens.access_token);
+
+				await axios.post(`/api/token`, data.tokens);
 			}
 		} catch (error) {
 			console.log({ error });
