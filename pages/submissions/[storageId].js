@@ -1,8 +1,10 @@
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getSubmission, getSubmissions } from '../../lib';
 import SubmissionWrapper from '../../components/atoms/SubmissionWrapper';
+import axios from 'axios';
+import { MainContext } from '../../context/MainContext';
 
 const Card = styled.div`
 	background: #fff;
@@ -118,13 +120,20 @@ const ReviewSubmissionUI = ({ show, submission, publish }) => {
 export default function ReviewSubmission({ submission }) {
 	const router = useRouter();
 	const [show, setShow] = useState(false);
+	const { accessToken } = useContext(MainContext);
 
 	useEffect(() => {
 		setTimeout(() => setShow(true), 3000);
 	}, []);
 
 	const publishToYoutube = async () => {
-		alert('publishing to YT');
+		try {
+			const { data } = await axios.get('/api/auth');
+			console.log({ data });
+			window.location.href = data.url;
+		} catch (error) {
+			new Error(`{ publishToYoutube : ${error} }`);
+		}
 	};
 
 	return router.isFallback ? (

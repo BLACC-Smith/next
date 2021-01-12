@@ -3,7 +3,9 @@ import styled from '@emotion/styled';
 import Header from '../components/atoms/Header';
 import { getSubmissions } from '../lib';
 import Submission from '../components/atoms/Submission';
-
+import { useContext, useEffect, useState } from 'react';
+import { MainContext } from '../context/MainContext';
+import { useRouter } from 'next/router';
 const Container = styled.main`
 	width: 100vw;
 	height: 100vh;
@@ -18,6 +20,14 @@ const SubmissionWrapper = styled.div`
 `;
 
 export default function Home({ submissions }) {
+	const { updateAccessToken } = useContext(MainContext);
+	const router = useRouter();
+
+	useEffect(() => {
+		if (router.asPath.length > 2) {
+			updateAccessToken(router.asPath.split('&')[1].split('=')[1]);
+		}
+	}, []);
 	return (
 		<>
 			<Head>
