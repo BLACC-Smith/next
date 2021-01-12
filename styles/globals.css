@@ -1,6 +1,8 @@
 * {
 	padding: 0;
 	margin: 0;
-	font-family: 'Roboto', sans-serif;
+	outline: none;
+	text-decoration: none;
 	box-sizing: border-box;
+	font-family: 'Roboto', sans-serif;
 }
