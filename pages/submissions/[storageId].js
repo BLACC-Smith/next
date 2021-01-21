@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getSubmission, getSubmissions } from '../../lib';
 import SubmissionWrapper from '../../components/atoms/SubmissionWrapper';
+import axios from 'axios';
 
 const Card = styled.div`
 	background: #fff;
@@ -92,7 +93,7 @@ const MetadataContainer = styled.div`
 const ReviewSubmissionUI = ({ show, submission, publish }) => {
 	return (
 		<SubmissionWrapper>
-			<Card show={false}>
+			<Card show={show}>
 				<MetadataContainer>
 					<Video width="100%" controls src={submission.video} />
 					<Title>{submission.title}</Title>
@@ -124,7 +125,12 @@ export default function ReviewSubmission({ submission }) {
 	}, []);
 
 	const publishToYoutube = async () => {
-		alert('publishing to YT');
+		try {
+			const { data } = await axios.post('/api/upload', { submission });
+			console.log({ data });
+		} catch (error) {
+			new Error(`{ publishToYoutube : ${error} }`);
+		}
 	};
 
 	return router.isFallback ? (

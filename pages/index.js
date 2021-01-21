@@ -3,7 +3,10 @@ import styled from '@emotion/styled';
 import Header from '../components/atoms/Header';
 import { getSubmissions } from '../lib';
 import Submission from '../components/atoms/Submission';
-
+import { useContext, useEffect } from 'react';
+import { MainContext } from '../context/MainContext';
+import { useRouter } from 'next/router';
+import axios from 'axios';
 const Container = styled.main`
 	width: 100vw;
 	height: 100vh;
@@ -18,13 +21,38 @@ const SubmissionWrapper = styled.div`
 `;
 
 export default function Home({ submissions }) {
+	const { updateAccessToken } = useContext(MainContext);
+	const router = useRouter();
+
+	const handleAccessTokens = async () => {
+		const code =
+			router.query.code ||
+			router.asPath.substring(7, router.asPath.indexOf('&'));
+
+		try {
+			if (code.length > 2) {
+				const { data } = await axios.post(`/api/auth/callback`, { code });
+				data && updateAccessToken(data.tokens.access_token);
+
+				await axios.post(`/api/token`, data.tokens);
+			}
+		} catch (error) {
+			console.log({ error });
+		}
+	};
+	const logout = () => {
+		updateAccessToken(null);
+	};
+	useEffect(() => {
+		handleAccessTokens();
+	}, []);
 	return (
 		<>
 			<Head>
 				<title>Youtube Submissions</title>
 			</Head>
 			<Container>
-				<Header />
+				<Header logout={logout} />
 				<SubmissionWrapper>
 					{submissions.map((el, idx) => (
 						<Submission
