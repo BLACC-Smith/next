@@ -3,7 +3,11 @@ import styled from '@emotion/styled';
 
 const Container = styled.div`
 	display: flex;
+	position: sticky;
+	top: 0;
 	width: 100%;
+	background: rgba(0, 0, 0, 0.65);
+	backdrop-filter: blur(20px);
 	padding: 24px 48px;
 	justify-content: space-between;
 	align-items: center;
@@ -47,17 +51,16 @@ const DiscordCTA = styled.a`
 	}
 `;
 
+const BoringImg = styled.img`
+	border-radius: 50px;
+	margin-right: 12px;
+`;
+
 export default function Header() {
 	return (
 		<Container>
 			<Brand>
-				<Image
-					src="/blacc.png"
-					alt="BLACC logo"
-					width="69"
-					height="69"
-					objectFit="contain"
-				/>
+				<BoringImg src="/blacc.png" alt="BLACC logo" width="69" height="69" />
 				<Name>BLACC</Name>
 			</Brand>
 			<DiscordCTA href="https://discord.gg/9Bh3TZ2">

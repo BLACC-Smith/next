@@ -7,7 +7,6 @@ const Container = styled.main`
 	background: #000;
 	width: 100vw;
 	height: 100vh;
-	overflow: hidden;
 `;
 
 export default function Home() {

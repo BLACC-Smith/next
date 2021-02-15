@@ -5,10 +5,9 @@ const Container = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	width: 100%;
-	height: calc(100% - 117px);
+	background: #000;
 
 	@media (max-width: 600px) {
-		height: auto;
 		grid-template-columns: 1fr;
 	}
 `;
@@ -24,44 +23,43 @@ const LeftContainer = styled.div`
 const RightContainer = styled.div`
 	height: 100%;
 	width: 100%;
-	padding: 24px;
+	padding: 24px 48px;
+
+	@media (max-width: 600px) {
+		padding: 24px;
+	}
 `;
-const Img = styled.div`
-	height: 100%;
-	width: 100%;
-	position: relative;
-	overflow: hidden;
-	border-radius: 4px;
-`;
+
 const Title = styled.p`
 	font-size: 36px;
 	font-weight: bold;
 	color: #fff;
 `;
-const UndrawContainer = styled.div`
-	height: 100%;
-	width: auto;
-	margin-top: 16px;
-	position: relative;
+const Undraw = styled.img`
+	object-fit: contain;
+	height: auto;
+	width: 100%;
+	margin-top: 24px;
 
 	@media (max-width: 600px) {
 		display: none;
 	}
+`;
+const BoringImg = styled.img`
+	object-fit: contain;
+	height: 100%;
+	width: 100%;
 `;
 
 export default function UpcomingEvent() {
 	return (
 		<Container>
 			<LeftContainer>
-				<Title>Upcoming Events</Title>
-				<UndrawContainer>
-					<Image src="/undraw_events.png" layout="fill" objectFit="contain" />
-				</UndrawContainer>
+				<Title>Upcoming Event</Title>
+				<Undraw src="/undraw_events.png" layout="fill" objectFit="contain" />
 			</LeftContainer>
 			<RightContainer>
-				<Img>
-					<Image src="/event.png" layout="fill" objectFit="contain" />
-				</Img>
+				<BoringImg src="/event.png" layout="fill" objectFit="contain" />
 			</RightContainer>
 		</Container>
 	);
