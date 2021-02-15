@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styled from '@emotion/styled';
 import Header from '../components/atoms/Header';
+import UpcomingEvent from '../components/molecules/UpcomingEvent';
 
 const Container = styled.main`
 	background: #000;
@@ -16,6 +17,7 @@ export default function Home() {
 				<title>BLACC</title>
 			</Head>
 			<Header />
+			<UpcomingEvent />
 		</Container>
 	);
 }

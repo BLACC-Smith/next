@@ -7,6 +7,10 @@ const Container = styled.div`
 	padding: 24px 48px;
 	justify-content: space-between;
 	align-items: center;
+
+	@media (max-width: 600px) {
+		padding: 24px;
+	}
 `;
 const Brand = styled.div`
 	display: flex;
@@ -18,6 +22,10 @@ const Name = styled.p`
 	font-size: 32px;
 	letter-spacing: 3px;
 	font-weight: 500;
+
+	@media (max-width: 600px) {
+		display: none;
+	}
 `;
 
 const DiscordCTA = styled.a`
@@ -32,6 +40,10 @@ const DiscordCTA = styled.a`
 	:hover {
 		color: #000;
 		background: #fff;
+	}
+
+	@media (max-width: 600px) {
+		padding: 16px;
 	}
 `;
 
