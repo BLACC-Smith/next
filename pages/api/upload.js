@@ -19,7 +19,6 @@ export default async (req, res) => {
 	const { access_token } = await getAccessToken();
 
 	try {
-		console.log({ API_KEY: process.env.GOOGLE_API_KEY });
 		const { data } = await axios.post(
 			`https://youtube.googleapis.com/youtube/v3/videos?key=${process.env.GOOGLE_API_KEY}`,
 			{
