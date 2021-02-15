@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import styled from '@emotion/styled';
 
 const Container = styled.div`

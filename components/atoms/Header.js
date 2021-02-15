@@ -1,10 +1,10 @@
-import Image from 'next/image';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
 	display: flex;
 	position: sticky;
 	top: 0;
+	z-index: 5;
 	width: 100%;
 	background: rgba(0, 0, 0, 0.65);
 	backdrop-filter: blur(20px);
