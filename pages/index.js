@@ -1,45 +1,35 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import styled from '@emotion/styled';
+import Header from '../components/atoms/Header';
+import UpcomingEvent from '../components/molecules/UpcomingEvent';
+import { useEffect, useRef, useState } from 'react';
 
 const Container = styled.main`
 	background: #000;
 	width: 100vw;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	overflow: hidden;
-`;
-const DiscordCTA = styled.a`
-	padding: 24px 36px;
-	background: #fff;
-	font-weight: 600;
-	cursor: pointer;
-	border-radius: 4px;
-	transition: all 0.3s;
-	:hover {
-		transform: scale(1.1);
-	}
+	height: ${({ containerHeight, innerHeight }) =>
+		`calc(${containerHeight}px - ${containerHeight - innerHeight}px)`};
 `;
 
 export default function Home() {
+	const container = useRef(null);
+	const [windowHeight, setWindowHeight] = useState(0);
+
+	useEffect(() => {
+		setWindowHeight(window.innerHeight);
+	}, []);
+
 	return (
-		<Container>
+		<Container
+			ref={container}
+			innerHeight={windowHeight}
+			containerHeight={container.current?.offsetHeight}
+		>
 			<Head>
 				<title>BLACC</title>
 			</Head>
-			<Image
-				src="/blacc.png"
-				alt="BLACC logo"
-				width="300"
-				height="300"
-				objectFit="contain"
-			/>
-			<DiscordCTA href="https://discord.gg/9Bh3TZ2">
-				Join our community
-			</DiscordCTA>
+			<Header />
+			<UpcomingEvent />
 		</Container>
 	);
 }
