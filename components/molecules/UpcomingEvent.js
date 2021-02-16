@@ -51,26 +51,40 @@ const BoringImg = styled.img`
 	width: 100%;
 `;
 
-const CTA = styled.a`
-	padding: 12px 24px;
+const InlineCTA = styled.a`
+	padding: ${({ inline }) => (inline ? '8px 16px' : ' 12px 24px')};
 	border-radius: 4px;
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
 	color: #fff;
-	font-size: 24px;
+	text-align: center;
+	font-size: 16px;
+	background: #9147ff;
+	font-weight: 600;
+	margin-left: 12px;
+	box-shadow: 2px 12px 24px rgba(145, 71, 255, 0.5);
+
+	@media (max-width: 600px) {
+		display: none;
+	}
+`;
+const CTA = styled.a`
+	padding: ${({ inline }) => (inline ? '8px 16px' : ' 12px 24px')};
+	border-radius: 4px;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+	text-align: center;
+	font-size: ${({ inline }) => (inline ? '16px' : '24px')};
 	background: #9147ff;
 	font-weight: 600;
 	box-shadow: 2px 12px 24px rgba(145, 71, 255, 0.5);
-	// position: absolute;
-	// bottom: 36px;
-	// left: 48px;
 
 	@media (max-width: 600px) {
-		// position: relative;
-		// bottom: 0;
-		// left: 0;
 		margin-top: 16px;
+		display: inline-flex;
 	}
 `;
 
@@ -78,7 +92,16 @@ export default function UpcomingEvent() {
 	return (
 		<Container>
 			<LeftContainer>
-				<Title>Upcoming Event</Title>
+				<div style={{ display: 'flex' }}>
+					<Title>Upcoming Event</Title>
+					<InlineCTA
+						inline
+						href="https://www.twitch.tv/blacc_xyz"
+						target="_blank"
+					>
+						JOIN EVENT
+					</InlineCTA>
+				</div>
 				<Undraw src="/undraw_events.png" layout="fill" objectFit="contain" />
 				<CTA href="https://www.twitch.tv/blacc_xyz" target="_blank">
 					JOIN EVENT
