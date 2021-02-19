@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
@@ -20,6 +21,7 @@ const Brand = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+	cursor: pointer;
 `;
 const Name = styled.p`
 	color: #fff;
@@ -59,10 +61,12 @@ const BoringImg = styled.img`
 export default function Header() {
 	return (
 		<Container>
-			<Brand>
-				<BoringImg src="/blacc.png" alt="BLACC logo" width="69" height="69" />
-				<Name>BLACC</Name>
-			</Brand>
+			<Link href="/">
+				<Brand>
+					<BoringImg src="/blacc.png" alt="BLACC logo" width="69" height="69" />
+					<Name>BLACC</Name>
+				</Brand>
+			</Link>
 			<DiscordCTA href="https://discord.gg/9Bh3TZ2">
 				Join our community
 			</DiscordCTA>
