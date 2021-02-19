@@ -48,6 +48,15 @@ const UploadUI = ({
 		<>
 			<Head>
 				<title>Upload Your Submission</title>
+				<meta
+					name="description"
+					content="Upload your video and we'll add it to our official Youtube channel!"
+				/>
+				<meta property="og:title" content="Youtube Uploader" />
+				<meta
+					property="og:description"
+					content="Upload your video and we'll add it to our official Youtube channel!"
+				/>
 			</Head>
 			<Container>
 				<Toast error={error} show={showSuccess} isError={error} />

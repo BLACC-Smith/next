@@ -66,6 +66,15 @@ export default function Live() {
 		<>
 			<Head>
 				<title>Live Events w/BLACC</title>
+				<meta
+					name="description"
+					content="Check out what we're up to! Stay in the know about our live coding sessions and podacsts!"
+				/>
+				<meta property="og:title" content="Live Events w/BLACC" />
+				<meta
+					property="og:description"
+					content="Check out what we're up to! Stay in the know about our live coding sessions and podacsts!"
+				/>
 			</Head>
 			<Container id="hi" ref={container}>
 				{!width || !height ? (
