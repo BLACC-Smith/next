@@ -1,10 +1,11 @@
+import Head from 'next/head';
 import styled from '@emotion/styled';
 import { useEffect, useRef, useState } from 'react';
 import { ImTwitch, ImYoutube } from 'react-icons/im';
 
 const Container = styled.div`
 	width: 100vw;
-	height: 100vh;
+	height: calc(100vh - 117px);
 	background: #000;
 	display: flex;
 	flex-direction: column;
@@ -13,7 +14,7 @@ const Container = styled.div`
 `;
 const IframeContainer = styled.div`
 	width: 50%;
-	height: 35%;
+	height: 40%;
 	max-width: 960px;
 	max-height: 576px;
 	border-radius: 16px;
@@ -62,42 +63,47 @@ export default function Live() {
 	}, [container]);
 
 	return (
-		<Container id="hi" ref={container}>
-			{!width || !height ? (
-				<p>Loading</p>
-			) : (
-				<>
-					<IframeContainer>
-						<iframe
-							src="https://embed.restream.io/player/index.html?token=e2022a75ef752141417cf11887150a39"
-							width={width}
-							height={height}
-							frameBorder="0"
-							allowFullScreen
-						/>
-					</IframeContainer>
-					<CTAContainer>
-						<CTA
-							bg="#9147ff"
-							shadow="rgba(145, 71, 255, 0.5)"
-							href="https://www.twitch.tv/blacc_xyz"
-							target="_blank"
-						>
-							<ImTwitch />
-							<Label>Watch Live on Twitch</Label>
-						</CTA>
-						<CTA
-							bg="#ff0202"
-							shadow="rgba(255, 2, 2, 0.5)"
-							href="https://www.youtube.com/channel/UCaTP89xCILPWN9qfA9Ike2A"
-							target="_blank"
-						>
-							<ImYoutube />
-							<Label>Watch Live on Youtube</Label>
-						</CTA>
-					</CTAContainer>
-				</>
-			)}
-		</Container>
+		<>
+			<Head>
+				<title>Live Events w/BLACC</title>
+			</Head>
+			<Container id="hi" ref={container}>
+				{!width || !height ? (
+					<p>Loading</p>
+				) : (
+					<>
+						<IframeContainer>
+							<iframe
+								src="https://embed.restream.io/player/index.html?token=e2022a75ef752141417cf11887150a39"
+								width={width}
+								height={height}
+								frameBorder="0"
+								allowFullScreen
+							/>
+						</IframeContainer>
+						<CTAContainer>
+							<CTA
+								bg="#9147ff"
+								shadow="rgba(145, 71, 255, 0.5)"
+								href="https://www.twitch.tv/blacc_xyz"
+								target="_blank"
+							>
+								<ImTwitch />
+								<Label>Watch Live on Twitch</Label>
+							</CTA>
+							<CTA
+								bg="#ff0202"
+								shadow="rgba(255, 2, 2, 0.5)"
+								href="https://www.youtube.com/channel/UCaTP89xCILPWN9qfA9Ike2A"
+								target="_blank"
+							>
+								<ImYoutube />
+								<Label>Watch Live on Youtube</Label>
+							</CTA>
+						</CTAContainer>
+					</>
+				)}
+			</Container>
+		</>
 	);
 }

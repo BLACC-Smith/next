@@ -7,14 +7,25 @@ import Toast from '../components/atoms/Toast';
 import { uploadVideoToStorage } from '../lib';
 
 const Container = styled.div`
+	// display: grid;
+	// grid-template-columns: 1fr 1fr;
+	// justify-items: center;
+	// align-items: center;
+	background: #fff;
+	overflow: hidden;
+	width: 100vw;
+	height: calc(100vh - 117px);
+	position: relative;
+`;
+const Wrapper = styled.div`
+	height: 100%;
+	width: 100%;
+	overflow-y: scroll;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	justify-items: center;
 	align-items: center;
-	width: 100vw;
-	height: 100vh;
-	overflow: hidden;
-	position: relative;
+	padding-bottom: 24px;
 `;
 
 const UploadUI = ({
@@ -40,19 +51,21 @@ const UploadUI = ({
 			</Head>
 			<Container>
 				<Toast error={error} show={showSuccess} isError={error} />
-				<VideoContainer video={video} setVideo={setVideo} />
-				<FormSubmission
-					title={title}
-					setTitle={setTitle}
-					username={username}
-					setUsername={setUsername}
-					progress={progress}
-					chosenTags={chosenTags}
-					description={description}
-					onSubmit={uploadSubmission}
-					setChosenTags={setChosenTags}
-					setDescription={setDescription}
-				/>
+				<Wrapper>
+					<VideoContainer video={video} setVideo={setVideo} />
+					<FormSubmission
+						title={title}
+						setTitle={setTitle}
+						username={username}
+						setUsername={setUsername}
+						progress={progress}
+						chosenTags={chosenTags}
+						description={description}
+						onSubmit={uploadSubmission}
+						setChosenTags={setChosenTags}
+						setDescription={setDescription}
+					/>
+				</Wrapper>
 			</Container>
 		</>
 	);
