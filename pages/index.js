@@ -23,6 +23,15 @@ export default function Home() {
 			<Head>
 				<title>BLACC</title>
 				<meta property="og:image" content="/blacc.png" />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta property="twitter:domain" content="blacc.xyz" />
+				<meta property="twitter:url" content="https://blacc.xyz/live" />
+				<meta name="twitter:title" content="BLACC" />
+				<meta
+					name="twitter:description"
+					content="BLACC (The Black Coder Community), a safe space for black people to exchange knowledge and to be exposed to new technologies."
+				/>
+				<meta name="twitter:image" content="/blacc.png" />
 			</Head>
 			<Container
 				ref={container}

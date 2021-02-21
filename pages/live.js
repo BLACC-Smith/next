@@ -76,6 +76,15 @@ export default function Live() {
 					content="Check out what we're up to! Stay in the know about our live coding sessions and podacsts!"
 				/>
 				<meta property="og:image" content="/blacc_live.png" />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta property="twitter:domain" content="blacc.xyz" />
+				<meta property="twitter:url" content="https://blacc.xyz/live" />
+				<meta name="twitter:title" content="Live Events w/BLACC" />
+				<meta
+					name="twitter:description"
+					content="Check out what we're up to! Stay in the know about our live coding sessions and podacsts!"
+				/>
+				<meta name="twitter:image" content="/blacc_live.png" />
 			</Head>
 			<Container id="hi" ref={container}>
 				{!width || !height ? (
