@@ -75,6 +75,7 @@ export default function Live() {
 					property="og:description"
 					content="Check out what we're up to! Stay in the know about our live coding sessions and podacsts!"
 				/>
+				<meta property="og:image" content="/blacc_live.png" />
 			</Head>
 			<Container id="hi" ref={container}>
 				{!width || !height ? (
