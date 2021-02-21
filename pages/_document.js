@@ -49,7 +49,6 @@ class MyDocument extends Document {
 						content="BLACC (The Black Coder Community), a safe space for black people to exchange knowledge and to be exposed to new technologies."
 					/>
 					<meta property="og:type" content="article" />
-					<meta property="og:image" content="/blacc.png" />
 				</Head>
 				<body>
 					<Main />

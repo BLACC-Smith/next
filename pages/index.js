@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import styled from '@emotion/styled';
-import Header from '../components/atoms/Header';
 import UpcomingEvent from '../components/molecules/UpcomingEvent';
 import { useEffect, useRef, useState } from 'react';
 
@@ -20,15 +19,21 @@ export default function Home() {
 	}, []);
 
 	return (
-		<Container
-			ref={container}
-			innerHeight={windowHeight}
-			containerHeight={container.current?.offsetHeight}
-		>
+		<>
 			<Head>
 				<title>BLACC</title>
+				<meta property="og:image" content="/blacc.png" />
 			</Head>
-			<UpcomingEvent />
-		</Container>
+			<Container
+				ref={container}
+				innerHeight={windowHeight}
+				containerHeight={container.current?.offsetHeight}
+			>
+				<Head>
+					<title>BLACC</title>
+				</Head>
+				<UpcomingEvent />
+			</Container>
+		</>
 	);
 }
