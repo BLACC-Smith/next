@@ -65,17 +65,24 @@ export default function Live() {
 	return (
 		<>
 			<Head>
+				{/* HTML Meta Tags  */}
 				<title>Live Events w/BLACC</title>
 				<meta
 					name="description"
 					content="Check out what we're up to! Stay in the know about our live coding sessions and podacsts!"
 				/>
+
+				{/* Facebook Meta Tags  */}
+				<meta property="og:url" content="https://blacc.xyz/live" />
+				<meta property="og:type" content="website" />
 				<meta property="og:title" content="Live Events w/BLACC" />
 				<meta
 					property="og:description"
 					content="Check out what we're up to! Stay in the know about our live coding sessions and podacsts!"
 				/>
 				<meta property="og:image" content="/blacc_live.png" />
+
+				{/* Twitter Meta Tags  */}
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta property="twitter:domain" content="blacc.xyz" />
 				<meta property="twitter:url" content="https://blacc.xyz/live" />
