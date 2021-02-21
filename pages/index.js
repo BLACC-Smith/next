@@ -28,7 +28,6 @@ export default function Home() {
 			<Head>
 				<title>BLACC</title>
 			</Head>
-			<Header />
 			<UpcomingEvent />
 		</Container>
 	);

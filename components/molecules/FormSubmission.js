@@ -9,6 +9,7 @@ const Container = styled.div`
 	align-items: center;
 	flex-direction: column;
 	position: relative;
+	padding: 24px 0;
 `;
 const Divider = styled.div`
 	position: absolute;

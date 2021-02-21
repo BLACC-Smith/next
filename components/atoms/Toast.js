@@ -7,6 +7,8 @@ const Container = styled.div`
 	border-radius: 8px;
 	position: absolute;
 	bottom: 24px;
+	z-index: 5;
+	left: calc(50% - 200px);
 	width: calc(100% - 32px);
 	max-width: 400px;
 	box-shadow: 0 7px 15px ${({ isError }) => (isError ? '#ef9a9a' : '#82cc7d')};
