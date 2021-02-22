@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
 
 const Container = styled.div`
 	display: flex;
@@ -51,12 +52,13 @@ const Links = styled.div`
 const LinkItem = styled.p`
 	font-size: 18px;
 	font-weight: 400;
-	padding: 16px;
+	padding: 12px;
 	border-radius: 6px;
 	color: #eeeeee;
 	cursor: pointer;
 	transition: all 0.25s;
-
+	background: ${({ active }) =>
+		active ? 'rgba(255, 255, 255, 0.15)' : 'transparent'};
 	&:hover {
 		background: rgba(255, 255, 255, 0.2);
 	}
@@ -64,6 +66,8 @@ const LinkItem = styled.p`
 const ExternalLink = styled.a``;
 
 export default function Header() {
+	const router = useRouter();
+
 	return (
 		<Container>
 			<Link href="/">
@@ -74,7 +78,7 @@ export default function Header() {
 			</Link>
 			<Links>
 				<Link href="/live">
-					<LinkItem>Live Events</LinkItem>
+					<LinkItem active={router.route === '/live'}>Live Events</LinkItem>
 				</Link>
 				<ExternalLink href="https://github.com/BLACC-Smith" target="_blank">
 					<LinkItem>Contribute</LinkItem>
