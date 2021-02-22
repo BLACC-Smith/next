@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import styled from '@emotion/styled';
-import UpcomingEvent from '../components/molecules/UpcomingEvent';
 import { useEffect, useRef, useState } from 'react';
 
 const Container = styled.main`
@@ -11,8 +10,9 @@ const Container = styled.main`
 `;
 const Jumbotron = styled.div`
 	width: 100vw;
+
 	height: ${({ containerHeight, innerHeight }) =>
-		`calc(${containerHeight}px - ${containerHeight - innerHeight}px)`};
+		`calc(${containerHeight}px - ${containerHeight - innerHeight}px )`};
 	padding: 128px 64px;
 	display: flex;
 	flex-direction: column;
@@ -22,6 +22,7 @@ const Jumbotron = styled.div`
 `;
 const PrimaryText = styled.p`
 	color: #fff;
+	margin-top: 117px;
 	font-size: 48px;
 	font-weight: 400;
 	letter-spacing: 5px;
@@ -153,7 +154,6 @@ export default function Home() {
 						></iframe>
 					</Widget>
 				</Jumbotron>
-				<UpcomingEvent />
 			</Container>
 		</>
 	);

@@ -2,18 +2,26 @@ import Head from 'next/head';
 import styled from '@emotion/styled';
 import { useEffect, useRef, useState } from 'react';
 import { ImTwitch, ImYoutube } from 'react-icons/im';
+import UpcomingEvent from '../components/molecules/UpcomingEvent';
 
 const Container = styled.div`
 	width: 100vw;
-	height: calc(100vh - 117px);
+	height: 100vh;
 	background: #000;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+`;
+const Wrapper = styled.div`
+	height: 100%;
+	width: 100%;
+	display: grid;
+	place-items: center;
+	grid-template-columns: 1fr 1fr;
+
+	@media (max-width: 600px) {
+		grid-template-columns: 1fr;
+	}
 `;
 const IframeContainer = styled.div`
-	width: 50%;
+	width: 75%;
 	height: 40%;
 	max-width: 960px;
 	max-height: 576px;
@@ -97,7 +105,7 @@ export default function Live() {
 				{!width || !height ? (
 					<p>Loading</p>
 				) : (
-					<>
+					<Wrapper>
 						<IframeContainer>
 							<iframe
 								src="https://embed.restream.io/player/index.html?token=e2022a75ef752141417cf11887150a39"
@@ -127,8 +135,9 @@ export default function Live() {
 								<Label>Watch Live on Youtube</Label>
 							</CTA>
 						</CTAContainer>
-					</>
+					</Wrapper>
 				)}
+				<UpcomingEvent />
 			</Container>
 		</>
 	);
