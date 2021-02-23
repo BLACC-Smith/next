@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
 
@@ -63,7 +64,16 @@ const LinkItem = styled.p`
 		background: rgba(255, 255, 255, 0.2);
 	}
 `;
-const ExternalLink = styled.a``;
+const ExternalLink = styled.a`
+	max-height: 45px;
+	${({ active }) =>
+		!active
+			? ''
+			: `
+			padding: 8px 12px;
+			background:rgba(255, 255, 255, 15);
+			border-radius: 6px;`}
+`;
 
 export default function Header() {
 	const router = useRouter();
@@ -82,6 +92,13 @@ export default function Header() {
 				</Link>
 				<ExternalLink href="https://github.com/BLACC-Smith" target="_blank">
 					<LinkItem>Contribute</LinkItem>
+				</ExternalLink>
+				<ExternalLink
+					href="https://www.buymeacoffee.com/blacc"
+					target="_blank"
+					active
+				>
+					<Image src="/bmc.png" width="20" height="29" />
 				</ExternalLink>
 			</Links>
 		</Container>
