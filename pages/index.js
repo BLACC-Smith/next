@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import styled from '@emotion/styled';
-import UpcomingEvent from '../components/molecules/UpcomingEvent';
 import { useEffect, useRef, useState } from 'react';
 
 const Container = styled.main`
@@ -9,9 +8,74 @@ const Container = styled.main`
 	height: ${({ containerHeight, innerHeight }) =>
 		`calc(${containerHeight}px - ${containerHeight - innerHeight}px)`};
 `;
+const Jumbotron = styled.div`
+	width: 100vw;
+
+	height: ${({ containerHeight, innerHeight }) =>
+		`calc(${containerHeight}px - ${containerHeight - innerHeight}px )`};
+	padding: 128px 64px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+	align-items: center;
+`;
+const PrimaryText = styled.p`
+	color: #fff;
+	margin-top: 117px;
+	font-size: 48px;
+	font-weight: 400;
+	letter-spacing: 5px;
+	text-align: center;
+`;
+const SecondaryText = styled.p`
+	color: #e0e0e0;
+	width: 75%;
+	font-weight: 300;
+	line-height: 48px;
+	font-size: 32px;
+	margin: 16px 0;
+	text-align: center;
+`;
+const CTA = styled.a`
+	padding: 24px 36px;
+	background: #000;
+	font-weight: 600;
+	cursor: pointer;
+	color: #fff;
+	margin-top: 16px;
+	display: inline-block;
+	user-select: none;
+	border-radius: 4px;
+	transition: all 0.2s;
+	border: 1px solid #fff;
+	:hover {
+		color: #000;
+		background: #fff;
+	}
+`;
+const Click = styled.div`
+	background: transparent;
+	position: absolute;
+	height: 74px;
+	top: 0;
+	left: 0;
+	width: 100%;
+`;
+const Widget = styled.div`
+	z-index: 10;
+	position: fixed;
+	cursor: pointer;
+	bottom: 32px;
+	right: 48px;
+	transition: all 0.3s;
+	height: ${({ open }) => (open ? '50%' : '74px')};
+	display: inline-block;
+`;
 
 export default function Home() {
 	const container = useRef(null);
+	const [openWidget, setOpenWidget] = useState(false);
 	const [windowHeight, setWindowHeight] = useState(0);
 
 	useEffect(() => {
@@ -66,7 +130,30 @@ export default function Home() {
 				<Head>
 					<title>BLACC</title>
 				</Head>
-				<UpcomingEvent />
+				<Jumbotron
+					innerHeight={windowHeight}
+					containerHeight={container.current?.offsetHeight}
+				>
+					<PrimaryText>The Black Coder Community</PrimaryText>
+					<SecondaryText>
+						A community exemplifying black excellence and pushing the needle
+						within tech
+					</SecondaryText>
+					<CTA href="https://discord.gg/9Bh3TZ2" target="_blank">
+						Join our community
+					</CTA>
+					<Widget open={openWidget}>
+						<Click onClick={() => setOpenWidget(!openWidget)} />
+						<iframe
+							src="https://discord.com/widget?id=769610692297752586&theme=dark"
+							width="100%"
+							height="100%"
+							allowTransparency="true"
+							frameBorder="0"
+							sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+						></iframe>
+					</Widget>
+				</Jumbotron>
 			</Container>
 		</>
 	);

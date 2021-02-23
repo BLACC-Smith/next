@@ -1,9 +1,11 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import styled from '@emotion/styled';
+import { useRouter } from 'next/router';
 
 const Container = styled.div`
 	display: flex;
-	position: sticky;
+	position: fixed;
 	top: 0;
 	z-index: 5;
 	width: 100%;
@@ -34,31 +36,48 @@ const Name = styled.p`
 	}
 `;
 
-const DiscordCTA = styled.a`
-	padding: 24px 36px;
-	background: #000;
-	font-weight: 600;
-	cursor: pointer;
-	color: #fff;
-	border-radius: 4px;
-	transition: all 0.2s;
-	border: 1px solid #fff;
-	:hover {
-		color: #000;
-		background: #fff;
-	}
-
-	@media (max-width: 600px) {
-		padding: 16px;
-	}
-`;
-
 const BoringImg = styled.img`
 	border-radius: 50px;
 	margin-right: 12px;
 `;
+const Links = styled.div`
+	width: 50%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+
+	& > * {
+		margin-left: 16px;
+	}
+`;
+const LinkItem = styled.p`
+	font-size: 18px;
+	font-weight: 400;
+	padding: 12px;
+	border-radius: 6px;
+	color: #eeeeee;
+	cursor: pointer;
+	transition: all 0.25s;
+	background: ${({ active }) =>
+		active ? 'rgba(255, 255, 255, 0.15)' : 'transparent'};
+	&:hover {
+		background: rgba(255, 255, 255, 0.2);
+	}
+`;
+const ExternalLink = styled.a`
+	max-height: 45px;
+	${({ active }) =>
+		!active
+			? ''
+			: `
+			padding: 8px 12px;
+			background:rgba(255, 255, 255, 15);
+			border-radius: 6px;`}
+`;
 
 export default function Header() {
+	const router = useRouter();
+
 	return (
 		<Container>
 			<Link href="/">
@@ -67,9 +86,21 @@ export default function Header() {
 					<Name>BLACC</Name>
 				</Brand>
 			</Link>
-			<DiscordCTA href="https://discord.gg/9Bh3TZ2">
-				Join our community
-			</DiscordCTA>
+			<Links>
+				<Link href="/live">
+					<LinkItem active={router.route === '/live'}>Live Events</LinkItem>
+				</Link>
+				<ExternalLink href="https://github.com/BLACC-Smith" target="_blank">
+					<LinkItem>Contribute</LinkItem>
+				</ExternalLink>
+				<ExternalLink
+					href="https://www.buymeacoffee.com/blacc"
+					target="_blank"
+					active
+				>
+					<Image src="/bmc.png" width="20" height="29" />
+				</ExternalLink>
+			</Links>
 		</Container>
 	);
 }

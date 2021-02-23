@@ -134,10 +134,10 @@ export default function UpcomingEvent() {
 		<Container>
 			<LeftContainer>
 				<div style={{ display: 'flex' }}>
-					<Title>Upcoming Event</Title>
-					<InlineSpan inline data-tooltip="This event hasn't started yet">
+					<Title>Past Events</Title>
+					{/* <InlineSpan inline data-tooltip="This event hasn't started yet">
 						JOIN EVENT
-					</InlineSpan>
+					</InlineSpan> */}
 					{/* <InlineCTA
 						inline
 						href="https://www.twitch.tv/blacc_xyz"
@@ -150,7 +150,7 @@ export default function UpcomingEvent() {
 				{/* <CTA href="https://www.twitch.tv/blacc_xyz" target="_blank">
 					JOIN EVENT
 				</CTA> */}
-				<Span data-tooltip="This event hasn't started yet">JOIN EVENT</Span>
+				{/* <Span data-tooltip="This event hasn't started yet">JOIN EVENT</Span> */}
 			</LeftContainer>
 			<RightContainer>
 				<BoringImg src="/event.png" layout="fill" objectFit="contain" />
