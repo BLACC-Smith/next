@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Wrapper = styled.div`
 	position: sticky;
@@ -173,10 +173,10 @@ export default function Header() {
 	const router = useRouter();
 	const [showMenu, setShowMenu] = useState(false);
 
-	const handleClick = (e) => {
-		if (!showMenu) e.preventDefault();
-		else setShowMenu(false);
-	};
+	useEffect(() => {
+		setShowMenu(false);
+	}, [router]);
+
 	return (
 		<Wrapper>
 			<Container>
@@ -219,19 +219,25 @@ export default function Header() {
 			</Container>
 			<MenuContainer show={showMenu}>
 				<Link href="/">
-					<MenuItem active={router.route === '/'} onClick={handleClick}>
+					<MenuItem
+						active={router.route === '/'}
+						onClick={(e) => !showMenu && e.preventDefault()}
+					>
 						<Icon className="material-icons">home</Icon>
 						<MenuLabel>Home</MenuLabel>
 					</MenuItem>
 				</Link>
 				<Link href="/live">
-					<MenuItem active={router.route === '/live'} onClick={handleClick}>
+					<MenuItem
+						active={router.route === '/live'}
+						onClick={(e) => !showMenu && e.preventDefault()}
+					>
 						<Icon className="material-icons">live_tv</Icon>
 						<MenuLabel>Live Events</MenuLabel>
 					</MenuItem>
 				</Link>
 				<ExternalMenuItem
-					onClick={handleClick}
+					onClick={(e) => !showMenu && e.preventDefault()}
 					href="https://github.com/BLACC-Smith"
 					target="_blank"
 				>
@@ -239,7 +245,7 @@ export default function Header() {
 					<MenuLabel>Contribute</MenuLabel>
 				</ExternalMenuItem>
 				<ExternalMenuItem
-					onClick={handleClick}
+					onClick={(e) => !showMenu && e.preventDefault()}
 					href="https://www.buymeacoffee.com/blacc"
 					target="_blank"
 				>
