@@ -42,7 +42,7 @@ const Details = styled.div`
 	@media (max-width: 600px) {
 		padding: 8px;
 		margin-left: 0;
-		margin-top: 24px;
+		margin-top: 12px;
 	}
 `;
 const Title = styled.p`
