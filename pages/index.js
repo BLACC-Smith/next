@@ -6,13 +6,12 @@ const Container = styled.main`
 	background: #000;
 	width: 100vw;
 	height: ${({ containerHeight, innerHeight }) =>
-		`calc(${containerHeight}px - ${containerHeight - innerHeight}px)`};
+		`calc(${containerHeight}px - ${containerHeight - innerHeight}px - 117px)`};
 `;
 const Jumbotron = styled.div`
 	width: 100vw;
-
-	height: ${({ containerHeight, innerHeight }) =>
-		`calc(${containerHeight}px - ${containerHeight - innerHeight}px )`};
+	height: 100%;
+	flex: 1 1 0%;
 	padding: 128px 64px;
 	display: flex;
 	flex-direction: column;
@@ -22,7 +21,6 @@ const Jumbotron = styled.div`
 `;
 const PrimaryText = styled.p`
 	color: #fff;
-	margin-top: 117px;
 	font-size: 48px;
 	font-weight: 400;
 	letter-spacing: 5px;
