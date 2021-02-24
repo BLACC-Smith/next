@@ -10,7 +10,7 @@ const Container = styled.main`
 `;
 const Jumbotron = styled.div`
 	width: 100vw;
-	height: height: ${({ containerHeight, innerHeight }) =>
+	height: ${({ containerHeight, innerHeight }) =>
 		`calc(${containerHeight}px - ${containerHeight - innerHeight}px - 117px)`};
 	flex: 1 1 0%;
 	padding: 128px 64px;
