@@ -5,6 +5,10 @@ const Container = styled.div`
 	background: #000;
 	width: 100%;
 	padding: 64px;
+
+	@media (max-width: 600px) {
+		padding: 64px 24px;
+	}
 `;
 const Title = styled.p`
 	font-size: 36px;

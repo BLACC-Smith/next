@@ -8,11 +8,17 @@ const Container = styled.div`
 	background: rgba(255, 255, 255, 0.2);
 	padding: 16px;
 	display: flex;
+	position: relative;
 	user-select: none;
 	justify-content: flex-start;
 	align-items: center;
 	max-width: 1500px;
 	margin: auto;
+
+	@media (max-width: 600px) {
+		padding: 0px;
+		display: block;
+	}
 `;
 const Img = styled.div`
 	width: 240px;
@@ -20,6 +26,11 @@ const Img = styled.div`
 	border-radius: 16px;
 	overflow: hidden;
 	position: relative;
+
+	@media (max-width: 600px) {
+		width: 100%;
+		border-radius: 6px;
+	}
 `;
 const Details = styled.div`
 	margin-left: 32px;
@@ -27,11 +38,21 @@ const Details = styled.div`
 	display: grid;
 	position: relative;
 	grid-template-rows: 1fr 1fr;
+
+	@media (max-width: 600px) {
+		padding: 8px;
+		margin-left: 0;
+		margin-top: 24px;
+	}
 `;
 const Title = styled.p`
 	font-size: 32px;
 	font-weight: 500;
 	color: #fafafa;
+
+	@media (max-width: 600px) {
+		font-size: 24px;
+	}
 `;
 const Date = styled.p`
 	font-size: 20px;
@@ -39,21 +60,31 @@ const Date = styled.p`
 	color: #eeeeee;
 	margin-top: 12px;
 `;
-const Metadata = styled.div``;
+const Metadata = styled.div`
+	@media (max-width: 600px) {
+		padding: 0 6px;
+	}
+`;
 const CTA = styled.a`
-	border: 1px solid #fafafa;
-	border-radius: 4px;
-	padding: 8px 16px;
+	border-radius: 8px;
+	padding: 16px;
+	border: 1px solid rgba(0, 0, 0, 0.2);
 	cursor: pointer;
 	align-self: flex-end;
 	color: #fafafa;
 	font-size: 18px;
+	font-weight: 500;
 	width: max-content;
 	transition: all 0.2s;
+	background: rgba(0, 0, 0, 0.2);
 
 	&:hover {
-		background: #fafafa;
-		color: #212121;
+		border: 1px solid #fafafa;
+	}
+
+	@media (max-width: 600px) {
+		width: 100%;
+		text-align: center;
 	}
 `;
 
