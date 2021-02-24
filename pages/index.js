@@ -18,6 +18,10 @@ const Jumbotron = styled.div`
 	justify-content: center;
 	position: relative;
 	align-items: center;
+
+	@media (max-width: 600px) {
+		padding: 128px 24px;
+	}
 `;
 const PrimaryText = styled.p`
 	color: #fff;
@@ -25,15 +29,23 @@ const PrimaryText = styled.p`
 	font-weight: 400;
 	letter-spacing: 5px;
 	text-align: center;
+
+	@media (max-width: 600px) {
+		font-size: 32px;
+	}
 `;
 const SecondaryText = styled.p`
 	color: #e0e0e0;
-	width: 75%;
+	width: 100%;
 	font-weight: 300;
 	line-height: 48px;
 	font-size: 32px;
 	margin: 16px 0;
 	text-align: center;
+
+	@media (max-width: 600px) {
+		font-size: 24px;
+	}
 `;
 const CTA = styled.a`
 	padding: 24px 36px;
@@ -69,6 +81,11 @@ const Widget = styled.div`
 	transition: all 0.3s;
 	height: ${({ open }) => (open ? '50%' : '74px')};
 	display: inline-block;
+
+	@media (max-width: 600px) {
+		right: 24px;
+		width: calc(100% - 48px);
+	}
 `;
 
 export default function Home() {
