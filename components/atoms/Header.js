@@ -30,10 +30,6 @@ const Name = styled.p`
 	font-size: 32px;
 	letter-spacing: 3px;
 	font-weight: 500;
-
-	@media (max-width: 600px) {
-		display: none;
-	}
 `;
 
 const BoringImg = styled.img`
@@ -63,6 +59,10 @@ const LinkItem = styled.p`
 	&:hover {
 		background: rgba(255, 255, 255, 0.2);
 	}
+
+	@media (max-width: 600px) {
+		display: none;
+	}
 `;
 const ExternalLink = styled.a`
 	max-height: 45px;
@@ -73,6 +73,10 @@ const ExternalLink = styled.a`
 			padding: 8px 12px;
 			background:rgba(255, 255, 255, 15);
 			border-radius: 6px;`}
+
+	@media (max-width: 600px) {
+		display: ${({ hide }) => (hide ? 'none' : 'block')};
+	}
 `;
 
 export default function Header() {
@@ -90,7 +94,11 @@ export default function Header() {
 				<Link href="/live">
 					<LinkItem active={router.route === '/live'}>Live Events</LinkItem>
 				</Link>
-				<ExternalLink href="https://github.com/BLACC-Smith" target="_blank">
+				<ExternalLink
+					href="https://github.com/BLACC-Smith"
+					target="_blank"
+					hide
+				>
 					<LinkItem>Contribute</LinkItem>
 				</ExternalLink>
 				<ExternalLink
