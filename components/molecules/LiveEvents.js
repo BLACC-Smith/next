@@ -23,7 +23,7 @@ export default function LiveEvents() {
 			<Title>Upcoming Events</Title>
 			<Event
 				img="/4_10_21.png"
-				title="🎙 Whiteness in Digital Productss"
+				title="🎙 Whiteness in Digital Products"
 				date="Apr 10, 2021"
 			/>
 		</Container>
