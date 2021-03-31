@@ -11,7 +11,7 @@ const Container = styled.div`
 	position: relative;
 	user-select: none;
 	justify-content: flex-start;
-	align-items: center;
+	align-items: flex-start;
 	max-width: 1500px;
 	margin: auto;
 
@@ -97,11 +97,15 @@ export default function Event({ img, title, date, url }) {
 			<Details>
 				<Metadata>
 					<Title>{title}</Title>
-					<Date>{date}</Date>
+					{url && <Date>{date}</Date>}
 				</Metadata>
-				<CTA href={url} target="_blank">
-					VIEW RECORDING
-				</CTA>
+				{!url ? (
+					<CTA>{date}</CTA>
+				) : (
+					<CTA href={url} target="_blank">
+						VIEW RECORDING
+					</CTA>
+				)}
 			</Details>
 		</Container>
 	);
