@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import styled from '@emotion/styled';
 import { useEffect, useRef, useState } from 'react';
+import LiveEvents from '../components/molecules/LiveEvents';
 import PastEvents from '../components/molecules/PastEvents';
 import LivestreamContainer from '../components/molecules/LivestreamContainer';
 
@@ -64,7 +65,7 @@ export default function Live() {
 					<p>Loading</p>
 				) : (
 					<Wrapper>
-						<LivestreamContainer width={width} height={height} />
+						<LiveEvents />
 						<PastEvents />
 					</Wrapper>
 				)}
