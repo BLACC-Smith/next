@@ -88,11 +88,11 @@ const CTA = styled.a`
 	}
 `;
 
-export default function Event({ img, title, date, url }) {
+export default function Event({ img, title, date, url, live }) {
 	return (
 		<Container>
 			<Img>
-				<Image src={img} layout="fill" objectFit="cover" />
+				<Image src={img} layout='fill' objectFit='cover' />
 			</Img>
 			<Details>
 				<Metadata>
@@ -101,9 +101,13 @@ export default function Event({ img, title, date, url }) {
 				</Metadata>
 				{!url ? (
 					<CTA>{date}</CTA>
-				) : (
-					<CTA href={url} target="_blank">
+				) : !live ? (
+					<CTA href={url} target='_blank'>
 						VIEW RECORDING
+					</CTA>
+				) : (
+					<CTA href={url} target='_blank'>
+						WATCH LIVE
 					</CTA>
 				)}
 			</Details>
