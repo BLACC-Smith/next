@@ -26,6 +26,7 @@ export default function LiveEvents() {
 				title='🎙 Whiteness in Digital Products'
 				date='Apr 10, 2021'
 				url='https://www.youtube.com/watch?v=PSXEQ4X5T20&ab_channel=BLACCSmith'
+				live='yes'
 			/>
 		</Container>
 	);
