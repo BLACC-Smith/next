@@ -26,7 +26,7 @@ export default function LiveEvents() {
 				title='👩🏾‍🔬 Building with the Twitch API and Github Actions'
 				date='May 8th, 2021'
 				url='https://www.twitch.tv/blacc_xyz'
-				live='yes'
+				live
 			/>
 		</Container>
 	);

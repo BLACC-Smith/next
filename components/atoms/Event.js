@@ -13,7 +13,7 @@ const Container = styled.div`
 	justify-content: flex-start;
 	align-items: flex-start;
 	max-width: 1500px;
-	margin: 1.5em auto;
+	margin: auto;
 
 	@media (max-width: 600px) {
 		padding: 0px;
