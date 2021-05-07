@@ -22,10 +22,10 @@ export default function LiveEvents() {
 		<Container>
 			<Title>Upcoming Events</Title>
 			<Event
-				img='/4_10_21.png'
-				title='🎙 Whiteness in Digital Products'
-				date='Apr 10, 2021'
-				url='https://www.youtube.com/watch?v=PSXEQ4X5T20&ab_channel=BLACCSmith'
+				img='/twitch.PNG'
+				title='👩🏾‍🔬 Building with the Twitch API and Github Actions'
+				date='May 8th, 2021'
+				url='https://www.twitch.tv/blacc_xyz'
 				live='yes'
 			/>
 		</Container>
