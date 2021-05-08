@@ -27,6 +27,12 @@ export default function PastEvents() {
 			<Title>Past Events</Title>
 			<Wrapper>
 				<Event
+					img='/twitch.PNG'
+					title='Building with the Twitch API and Github Actions'
+					date='May 8th, 2021'
+					url='https://www.youtube.com/watch?v=YQHo9JBTmoc&ab_channel=BLACCSmith'
+				/>
+				<Event
 					img='/4_25_21.png'
 					title='Getting Started with The Google Assistant'
 					date='Apr 25, 2021'
