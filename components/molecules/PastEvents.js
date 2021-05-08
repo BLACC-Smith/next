@@ -27,16 +27,22 @@ export default function PastEvents() {
 			<Title>Past Events</Title>
 			<Wrapper>
 				<Event
-					img="/4_10_21.png"
-					title="🎙 Whiteness in Digital Products"
-					date="Apr 10, 2021"
-					url="https://www.youtube.com/watch?v=PSXEQ4X5T20&ab_channel=BLACCSmith"
+					img='/4_25_21.png'
+					title='Getting Started with The Google Assistant'
+					date='Apr 25, 2021'
+					url='https://www.youtube.com/watch?v=csYiYlVcuO0'
 				/>
 				<Event
-					img="/2_21_21.jpg"
-					title="Live Coding Session: React + Firebase"
-					date="Feb 21, 2021"
-					url="https://www.youtube.com/watch?v=IJxaRsUtY-8"
+					img='/4_10_21.png'
+					title='Whiteness in Digital Products'
+					date='Apr 10, 2021'
+					url='https://www.youtube.com/watch?v=PSXEQ4X5T20&ab_channel=BLACCSmith'
+				/>
+				<Event
+					img='/2_21_21.jpg'
+					title='Live Coding Session: React + Firebase'
+					date='Feb 21, 2021'
+					url='https://www.youtube.com/watch?v=IJxaRsUtY-8'
 				/>
 			</Wrapper>
 		</Container>
