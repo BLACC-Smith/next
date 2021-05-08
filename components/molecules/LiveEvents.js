@@ -23,7 +23,7 @@ export default function LiveEvents() {
 			<Title>Upcoming Events</Title>
 			<Event
 				img='/twitch.PNG'
-				title='👩🏾‍Building with the Twitch API and Github Actions'
+				title='Building with the Twitch API and Github Actions'
 				date='May 8th, 2021'
 				url='https://www.twitch.tv/blacc_xyz'
 				live
